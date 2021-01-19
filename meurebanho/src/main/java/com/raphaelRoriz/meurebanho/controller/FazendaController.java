@@ -4,7 +4,6 @@ import com.raphaelRoriz.meurebanho.Repository.AnimalRepository;
 import com.raphaelRoriz.meurebanho.Repository.FazendaRepository;
 import com.raphaelRoriz.meurebanho.entity.AnimalEntity;
 import com.raphaelRoriz.meurebanho.entity.FazendaEntity;
-import com.raphaelRoriz.meurebanho.entity.UsuarioEntity;
 import com.raphaelRoriz.meurebanho.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -66,7 +65,5 @@ public class FazendaController {
             return ResponseEntity.notFound().build();
         }
     }
-
-
 
 }
