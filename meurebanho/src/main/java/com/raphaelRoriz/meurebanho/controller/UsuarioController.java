@@ -42,7 +42,7 @@ public class UsuarioController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping(value = "/inserirFazenda/{idUsuario}")
+    @PutMapping(value = "/{idUsuario}/inserirFazenda")
     public ResponseEntity<Object> inserirFazenda(@PathVariable Long idUsuario, @Valid @RequestBody FazendaEntity fazenda){
         Optional<UsuarioEntity> usuario = usuarioRepository.findById(idUsuario);
         if(usuario.isPresent()){
