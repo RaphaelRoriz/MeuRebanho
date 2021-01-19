@@ -1,5 +1,6 @@
 package com.raphaelRoriz.meurebanho.controller;
 
+import com.raphaelRoriz.meurebanho.Repository.AnimalRepository;
 import com.raphaelRoriz.meurebanho.Repository.FazendaRepository;
 import com.raphaelRoriz.meurebanho.entity.AnimalEntity;
 import com.raphaelRoriz.meurebanho.entity.FazendaEntity;
@@ -20,6 +21,9 @@ public class FazendaController {
 
     @Autowired
     FazendaRepository fazendaRepository;
+
+    @Autowired
+    AnimalRepository animalRepository;
 
     @Autowired
     AnimalService animalService;
@@ -47,6 +51,17 @@ public class FazendaController {
         if(fazenda.isPresent()){
             animalService.adicionarFazenda(animal,fazenda);
             return ResponseEntity.ok().body(animal);
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/{idFazenda}/listarAnimais")
+    public ResponseEntity<List<AnimalEntity>> listarAnimais(@PathVariable Long idFazenda){
+        Optional<FazendaEntity> fazenda = fazendaRepository.findById(idFazenda);
+        if(fazenda.isPresent()){
+            List<AnimalEntity> animais = animalService.filtrarPorFazenda(idFazenda);
+            return ResponseEntity.ok().body(animais);
         }else{
             return ResponseEntity.notFound().build();
         }
