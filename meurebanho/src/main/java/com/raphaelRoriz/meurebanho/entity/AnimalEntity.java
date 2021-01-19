@@ -55,6 +55,10 @@ public class AnimalEntity {
         return fazenda;
     }
 
+    public Long getIdFazenda(){
+        return this.getFazenda().getId();
+    }
+
     public void setFazenda(FazendaEntity fazenda) {
         this.fazenda = fazenda;
     }
