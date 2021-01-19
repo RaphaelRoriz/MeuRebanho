@@ -1,5 +1,7 @@
 package com.raphaelRoriz.meurebanho.entity;
 
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -23,7 +25,8 @@ public class AnimalEntity {
     @Pattern(regexp = "[A-Z a-z ]*\\s*", message = "Não é permitido caracteres especiais e números")
     private String especie;
 
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_fazenda", referencedColumnName = "id")
     private FazendaEntity fazenda;
 
