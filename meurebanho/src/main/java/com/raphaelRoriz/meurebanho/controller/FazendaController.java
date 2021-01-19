@@ -45,7 +45,7 @@ public class FazendaController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping("/inserirAnimal/{idFazenda}")
+    @PutMapping("/{idFazenda}/inserirAnimal")
     public ResponseEntity<Object> inserirAnimal(@PathVariable Long idFazenda, @Valid @RequestBody AnimalEntity animal){
         Optional<FazendaEntity> fazenda = fazendaRepository.findById(idFazenda);
         if(fazenda.isPresent()){
